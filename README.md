@@ -1,5 +1,6 @@
-# fullstack
-Simple Mongoose-Express-Angular-Node "contact book" application, with Karma/Jasmine unit tests.
+# fullstack-s3
+Simple Mongoose-Express-Angular-Node "contact book" application, with Karma/Jasmine unit tests, and
+optional AWS S3 image store.
 
 NOTE: this doesn't use nice things like express-generator, yeoman, grunt, and so on, more "bare bones".
 
@@ -24,12 +25,13 @@ NOTE: this doesn't use nice things like express-generator, yeoman, grunt, and so
     npm install --save ejs
     npm install --save angular
     npm install --save mongoose (mongodb client)
+    npm install --save aws-sdk (for s3 image storage)
     npm install --save-dev nodemon
 ```
 
 ## 2. Develop the application:
 ```
-    mkdir <app>/app, create <app>/app/index.html and <app>/app/app.js with the angular page html and code
+    create <app>/views/index.ejs and <app>/app/app.js with the angular page html and code
     create <app>/models/Contact.js with the Contact model
     create <app>/routes/contacts.js with the /contacts route code
     create <app>/server.js with the express app code
@@ -50,6 +52,14 @@ NOTE: this doesn't use nice things like express-generator, yeoman, grunt, and so
     npm run dev
 ```
 
+NOTE: In order to use the AWS S3 image store, you must set some environment variables first:
+```
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_DEFAULT_REGION
+MY_S3_BUCKET
+```
+
 ## 2. Open your browser to localhost:3000 and use the application:
 
 ### A. Enter a first name into the "New" field and click "Create"
@@ -59,6 +69,8 @@ NOTE: this doesn't use nice things like express-generator, yeoman, grunt, and so
 ### C. Add a last name, address, and/or company, and click "Save"
 
 The last saved data is now displayed on the right side of the screen.
+
+### D. Upload an image file, etc.
 
 # UNIT TESTING
 
