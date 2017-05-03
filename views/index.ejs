@@ -17,14 +17,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.js"></script>
 
 		<script>
-			var awsEnabled = false;
+			var awsEnabled = <%= awsEnabled %>;
 		</script>
-
-		<%if (awsEnabled) { %>
-		<script>
-			awsEnabled = true;
-		</script>
-		<% } %>
 
 		<script src="app.js"></script>
 
@@ -99,6 +93,8 @@
 
 			</form>
 
+			<% if (awsEnabled) { %>
+
 			<h3>Image:</h3>
 
 			<p><img ng-model="s3img" ng-show="s3geturl" ng-src="{{ s3geturl }}" my-error-src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png" /></p>
@@ -107,6 +103,8 @@
 				<input type="file" name="file" my-file />
 				<button class="btn btn-default" ng-click="upload()">Upload JPG Photo</button>
 			</form>
+
+			<% } %>
 
 			</div>
 			<div class="col-md-4" ng-show="updatedContact">
